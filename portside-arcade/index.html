@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Portside Arcade</title>
+<meta name="description" content="Free open-source browser games. No installs, no accounts.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bungee&family=Figtree:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body data-page="library">
+<header class="bar">
+  <div class="wrap">
+    <a class="logo" href="index.html"><span class="flag" aria-hidden="true"></span>Portside Arcade</a>
+  </div>
+</header>
+<main>
+  <section class="wrap intro">
+    <h1>Free browser games, <span>ported from GitHub.</span></h1>
+    <p>Open-source games that play right here in Chrome, Safari, Firefox and Edge, on computers and phones. No installs, no accounts.</p>
+  </section>
+  <section class="wrap">
+    <div class="controls">
+      <div class="chips" role="group" aria-label="Players" id="f-players"></div>
+      <div class="chips" role="group" aria-label="Difficulty" id="f-diff"></div>
+      <label class="search"><input id="q" type="search" placeholder="Search games" aria-label="Search games"></label>
+    </div>
+    <div class="grid" id="grid"></div>
+  </section>
+</main>
+<footer><div class="wrap">Portside Arcade · Every game stays credited to its original author and license.</div></footer>
+<script src="games.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>

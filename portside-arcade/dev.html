@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>Developer tool · Portside Arcade</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bungee&family=Figtree:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<header class="bar">
+  <div class="wrap">
+    <a class="logo" href="index.html"><span class="flag" aria-hidden="true"></span>Portside Arcade</a>
+    <span class="spacer"></span>
+    <span class="small">Developer tool</span>
+  </div>
+</header>
+<main class="wrap ed">
+  <div>
+    <h1>Port a game</h1>
+    <p class="small" style="max-width:70ch">Fill in the game page, copy the entry into <code>games.js</code>, and put the game's files in <code>games/&lt;id&gt;/</code>. Only people with write access to the GitHub repo can publish, so only your team can add games.</p>
+  </div>
+  <form class="ed-grid" id="form" novalidate>
+    <div style="display:grid;gap:18px;min-width:0">
+      <div class="panel">
+        <h2>Source <small>where the game comes from</small></h2>
+        <div class="f">
+          <label for="e-source">GitHub repository</label>
+          <div class="row"><input id="e-source" type="text" class="mono" placeholder="https://github.com/owner/repo" spellcheck="false" autocomplete="off"><button class="btn" type="button" id="fill">Fill from link</button></div>
+          <span class="help">Fills in the title, author and folder name. Change any of them.</span>
+        </div>
+        <div class="two">
+          <div class="f"><label for="e-author">Original author</label><input id="e-author" type="text"></div>
+          <div class="f"><label for="e-license">License</label>
+            <select id="e-license"><option value="">Not checked yet</option><option>MIT</option><option>Apache-2.0</option><option>BSD</option><option>GPL-3.0</option><option>MPL-2.0</option><option>Other open license</option></select></div>
+        </div>
+        <div class="two">
+          <div class="f"><label for="e-id">Folder name (id)</label><input id="e-id" type="text" class="mono" placeholder="clumsy-bird"><span class="help">Files go in games/<b id="id-echo">id</b>/</span></div>
+          <div class="f"><label for="e-entry">Start file</label><input id="e-entry" type="text" class="mono" value="index.html"><span class="help">The page that starts the game, inside the folder.</span></div>
+        </div>
+        <div class="f"><label for="e-aspect">Game shape</label>
+          <select id="e-aspect"><option value="16:9">Wide (16:9)</option><option value="4:3">Classic (4:3)</option><option value="1:1">Square (1:1)</option><option value="9:16">Tall, phone style (9:16)</option></select></div>
+      </div>
+
+      <div class="panel">
+        <h2>Game page <small>what players read</small></h2>
+        <div class="f"><label for="e-title">Title</label><input id="e-title" type="text" maxlength="60"></div>
+        <div class="f"><label for="e-tagline">One-line pitch</label><input id="e-tagline" type="text" maxlength="90"><span class="help" id="tag-count">0 / 90</span></div>
+        <div class="f"><label for="e-description">Description</label><textarea id="e-description" placeholder="What the game is about and why it's fun."></textarea></div>
+        <div class="f"><label for="e-howTo">How to play</label><textarea id="e-howTo" placeholder="Goal, controls, and a tip for beginners."></textarea></div>
+      </div>
+
+      <div class="panel">
+        <h2>Images <small>file names inside the game's folder</small></h2>
+        <div class="f"><label for="e-cover">Cover image</label><input id="e-cover" type="text" class="mono" placeholder="cover.png"><span class="help">Shown on the game card. A wide gameplay screenshot works best.</span></div>
+        <div class="f"><label for="e-shots">Screenshots</label><input id="e-shots" type="text" class="mono" placeholder="shot1.png, shot2.png, shot3.png"><span class="help">Separate with commas.</span></div>
+      </div>
+    </div>
+
+    <div style="display:grid;gap:18px;min-width:0">
+      <div class="panel">
+        <h2>Game facts</h2>
+        <div class="f"><span class="lab">Players</span><div class="opts">
+          <label class="opt"><input type="checkbox" name="players" value="solo"><span>1 player</span></label>
+          <label class="opt"><input type="checkbox" name="players" value="local"><span>2 players, same device</span></label>
+          <label class="opt"><input type="checkbox" name="players" value="online"><span>Online multiplayer</span></label></div></div>
+        <div class="f"><span class="lab">Difficulty</span><div class="opts">
+          <label class="opt"><input type="radio" name="difficulty" value="easy"><span>Easy</span></label>
+          <label class="opt"><input type="radio" name="difficulty" value="medium"><span>Medium</span></label>
+          <label class="opt"><input type="radio" name="difficulty" value="hard"><span>Hard</span></label></div></div>
+        <div class="f"><label for="e-genre">Genre</label>
+          <select id="e-genre"><option>Arcade</option><option>Puzzle</option><option>Platformer</option><option>Racing</option><option>Shooter</option><option>Strategy</option><option>Sports</option><option>Card &amp; board</option><option>Adventure</option><option>Other</option></select></div>
+        <div class="f"><span class="lab">Controls</span><div class="opts">
+          <label class="opt"><input type="checkbox" name="controls" value="keyboard"><span>Keyboard</span></label>
+          <label class="opt"><input type="checkbox" name="controls" value="mouse"><span>Mouse</span></label>
+          <label class="opt"><input type="checkbox" name="controls" value="touch"><span>Touch</span></label>
+          <label class="opt"><input type="checkbox" name="controls" value="gamepad"><span>Gamepad</span></label></div></div>
+        <div class="f"><label for="e-session">Typical session</label>
+          <select id="e-session"><option value="">Not set</option><option>Under 5 min</option><option>5–15 min</option><option>15–30 min</option><option>30+ min</option></select></div>
+      </div>
+
+      <div class="panel">
+        <h2>Ready to add?</h2>
+        <ul class="check" id="checklist"></ul>
+        <pre id="out" aria-label="Entry for games.js"></pre>
+        <div class="row"><button class="btn primary" type="button" id="copy">Copy entry</button><button class="btn" type="button" id="reset">Start over</button></div>
+        <p class="msg" id="msg" hidden></p>
+        <ol class="steps">
+          <li>Paste the entry inside the <code>[ ]</code> in <code>games.js</code>.</li>
+          <li>Copy the game's files into <code>games/<b class="id-echo2">id</b>/</code>, plus the cover and screenshots.</li>
+          <li>Open the site locally and test the game page.</li>
+          <li>Commit and push. GitHub Pages updates in about a minute.</li>
+        </ol>
+      </div>
+    </div>
+  </form>
+</main>
+<script src="games.js"></script>
+<script src="assets/dev.js"></script>
+</body>
+</html>
